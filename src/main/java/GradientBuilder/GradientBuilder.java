@@ -1,5 +1,6 @@
 package GradientBuilder;
 
+import GradientBuilder.Util.KeyBoardListener;
 import GradientBuilder.Windows.Menu;
 import GradientBuilder.Windows.Window;
 
@@ -18,6 +19,7 @@ public class GradientBuilder {
     public GradientBuilder() {
         windows = new ArrayList<>();
         toBeRemoved = new ArrayList<>();
+        KeyBoardListener.initialize();
         new Menu(this);
         start();
     }

@@ -1,35 +1,42 @@
 GradientBuilder/Util/InputPoint.java
  GradientBuilder.Util.InputPoint
-GradientBuilder/Util/Adapter.java
- GradientBuilder.Util.Adapter
 GradientBuilder/GradientBuilder.java
  GradientBuilder.GradientBuilder
-GradientBuilder/Windows/Window.java
- GradientBuilder.Windows.Window
- GradientBuilder.Windows.Window$WindowType
+GradientBuilder/Util/InputChannelMask.java
+ GradientBuilder.Util.InputChannelMask
+ GradientBuilder.Util.InputChannelMask$1
+GradientBuilder/Util/Pixel.java
+ GradientBuilder.Util.Pixel
 GradientBuilder/Util/InputField.java
  GradientBuilder.Util.InputField
 GradientBuilder/Util/ButtonMap.java
  GradientBuilder.Util.ButtonMap
+GradientBuilder/Util/KeyBoardListener.java
+ GradientBuilder.Util.KeyBoardListener
+GradientBuilder/Util/ChannelMask.java
+ GradientBuilder.Util.ChannelMask
+GradientBuilder/Images/Image.java
+ GradientBuilder.Images.Image
+ GradientBuilder.Images.Image$ImageType
 GradientBuilder/Windows/Menu.java
  GradientBuilder.Windows.Menu
+GradientBuilder/Windows/ImageDisplay.java
+ GradientBuilder.Windows.ImageDisplay
+GradientBuilder/Windows/Window.java
+ GradientBuilder.Windows.Window
+ GradientBuilder.Windows.Window$WindowType
+GradientBuilder/Util/Adapter.java
+ GradientBuilder.Util.Adapter
 GradientBuilder/Growths/Exponential.java
  GradientBuilder.Growths.Exponential
 GradientBuilder/Growths/Logarithmic.java
  GradientBuilder.Growths.Logarithmic
-GradientBuilder/Util/InputChannelMask.java
- GradientBuilder.Util.InputChannelMask
- GradientBuilder.Util.InputChannelMask$1
 GradientBuilder/Growths/Power.java
  GradientBuilder.Growths.Power
-GradientBuilder/Util/Pixel.java
- GradientBuilder.Util.Pixel
 GradientBuilder/Elements/Element.java
  GradientBuilder.Elements.Element
  GradientBuilder.Elements.Element$1
  GradientBuilder.Elements.Element$ElementType
-GradientBuilder/Util/ChannelMask.java
- GradientBuilder.Util.ChannelMask
 GradientBuilder/Windows/ElementEditor.java
  GradientBuilder.Windows.ElementEditor
  GradientBuilder.Windows.ElementEditor$1
@@ -48,19 +55,14 @@ GradientBuilder/Elements/Line.java
  GradientBuilder.Elements.Line
 GradientBuilder/Windows/GrowthManager.java
  GradientBuilder.Windows.GrowthManager
-GradientBuilder/Windows/ImageDisplay.java
- GradientBuilder.Windows.ImageDisplay
-GradientBuilder/Windows/GrowthEditor.java
- GradientBuilder.Windows.GrowthEditor
- GradientBuilder.Windows.GrowthEditor$1
-GradientBuilder/Elements/Circle.java
- GradientBuilder.Elements.Circle
-GradientBuilder/Images/Image.java
- GradientBuilder.Images.Image
- GradientBuilder.Images.Image$ImageType
-GradientBuilder/Elements/LineSegment.java
- GradientBuilder.Elements.LineSegment
 GradientBuilder/Windows/ImageEditor.java
  GradientBuilder.Windows.ImageEditor
 GradientBuilder/Windows/ElementManager.java
  GradientBuilder.Windows.ElementManager
+GradientBuilder/Elements/LineSegment.java
+ GradientBuilder.Elements.LineSegment
+GradientBuilder/Elements/Circle.java
+ GradientBuilder.Elements.Circle
+GradientBuilder/Windows/GrowthEditor.java
+ GradientBuilder.Windows.GrowthEditor
+ GradientBuilder.Windows.GrowthEditor$1

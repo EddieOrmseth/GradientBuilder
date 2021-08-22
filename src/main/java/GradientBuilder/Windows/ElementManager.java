@@ -6,12 +6,13 @@ import GradientBuilder.GradientBuilder;
 import GradientBuilder.Images.Image;
 import GradientBuilder.Images.Image.ImageType;
 import GradientBuilder.Util.ButtonMap;
+import GradientBuilder.Util.KeyBoardListener;
 
 import javax.swing.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 
-public class ElementManager extends Window implements ActionListener, KeyListener {
+public class ElementManager extends Window implements ActionListener {
 
     Image image;
     ButtonMap<Element> elements;
@@ -27,7 +28,6 @@ public class ElementManager extends Window implements ActionListener, KeyListene
     int buttonWidth = 150;
 
     private int previousButtonSize;
-    private boolean controlPressed = false;
 
     public ElementManager(GradientBuilder builder, Image image) {
         super(WindowType.ElementManager, builder);
@@ -38,7 +38,6 @@ public class ElementManager extends Window implements ActionListener, KeyListene
         setBounds(100, 100, 200 + widthOffset, 300 + heightOffset);
         setTitle("Element Manager");
         configure();
-        addKeyListener(this);
         setVisible(true);
         builder.addWindow(this);
     }
@@ -67,9 +66,13 @@ public class ElementManager extends Window implements ActionListener, KeyListene
     public void arrange() {
 
         if (elements.buttons.size() != previousButtonSize) {
-            for (int i = previousButtonSize; i < elements.buttons.size(); i++) {
-                add(elements.buttons.get(i));
-                elements.buttons.get(i).addActionListener(this);
+            if (elements.buttons.size() > previousButtonSize) {
+                for (int i = previousButtonSize; i < elements.buttons.size(); i++) {
+                    add(elements.buttons.get(i));
+                    elements.buttons.get(i).addActionListener(this);
+                }
+            } else {
+
             }
             previousButtonSize = elements.buttons.size();
         }
@@ -114,8 +117,9 @@ public class ElementManager extends Window implements ActionListener, KeyListene
 
         for (int i = 0; i < elements.buttons.size(); i++) {
             if (e.getSource() == elements.buttons.get(i)) {
-                if (controlPressed) {
-                    elements.removePair(elements.buttons.get(i));
+                if (KeyBoardListener.get(KeyEvent.VK_CONTROL)) {
+                    remove(elements.buttons.get(i));
+                    toBeRemoved.add(elements.values.get(i));
                 } else {
                     elements.values.get(i).activateWindow(builder, image);
                 }
@@ -132,25 +136,4 @@ public class ElementManager extends Window implements ActionListener, KeyListene
         toBeRemoved.add(element);
     }
 
-    @Override
-    public void keyTyped(KeyEvent e) {
-
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_CONTROL) {
-            controlPressed = true;
-            System.out.println("Control Key Pressed");
-        }
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_CONTROL) {
-            controlPressed = false;
-            System.out.println("Control Key Released");
-        }
-        System.out.println("Control Key Released");
-    }
 }

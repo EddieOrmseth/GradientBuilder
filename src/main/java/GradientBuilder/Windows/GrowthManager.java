@@ -7,15 +7,15 @@ import GradientBuilder.Growths.Power;
 import GradientBuilder.Images.Image;
 import GradientBuilder.Images.Image.ImageType;
 import GradientBuilder.Util.ButtonMap;
+import GradientBuilder.Util.KeyBoardListener;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
-public class GrowthManager extends Window implements ActionListener, KeyListener {
+public class GrowthManager extends Window implements ActionListener {
 
     Image image;
     Element element;
@@ -32,7 +32,6 @@ public class GrowthManager extends Window implements ActionListener, KeyListener
     int buttonWidth = 150;
 
     private int previousButtonSize;
-    private boolean controlPressed = false;
 
     public GrowthManager(GradientBuilder builder, Image image, Element element) {
         super(WindowType.GrowthManager, builder);
@@ -44,7 +43,6 @@ public class GrowthManager extends Window implements ActionListener, KeyListener
         setBounds(100, 100, 200 + widthOffset, 300 + heightOffset);
         setTitle("Growth Manager");
         configure();
-        addKeyListener(this);
         setVisible(true);
         builder.addWindow(this);
     }
@@ -120,8 +118,9 @@ public class GrowthManager extends Window implements ActionListener, KeyListener
 
         for (int i = 0; i < growths.buttons.size(); i++) {
             if (e.getSource() == growths.buttons.get(i)) {
-                if (controlPressed) {
-                    growths.removePair(growths.buttons.get(i));
+                if (KeyBoardListener.get(KeyEvent.VK_CONTROL)) {
+                    remove(growths.buttons.get(i));
+                    toBeRemoved.add(growths.values.get(i));
                 } else {
                     growths.values.get(i).activateWindow(builder, image, element);
                 }
@@ -138,22 +137,4 @@ public class GrowthManager extends Window implements ActionListener, KeyListener
         toBeRemoved.add(growth);
     }
 
-    @Override
-    public void keyTyped(KeyEvent e) {
-
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_CONTROL) {
-            controlPressed = true;
-        }
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_CONTROL) {
-            controlPressed = false;
-        }
-    }
 }
